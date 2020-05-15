@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-image: url("https://static.zerochan.net/Pok%C3%A9mon.the.Movie%3A.I.Choose.You%21.full.2126853.jpg");
+}
+
+img {
+  vertical-align: middle;
+}
+.hola {
+  background-color: #ffffff;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid rgb(255, 245, 245);
+  /* IMPORTANTE */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.klk {
+  background-color: rgb(255, 255, 253);
+
+  /* IMPORTANTE */
+  margin-left: auto;
+  margin-right: auto;
+  width: 120px;
+}
+.main {
+  color: #ffffff;
+}
+.nose {
+  color: white;
+}
+.ey {
+  display: flex;
+  text-align: center;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  width: 120px;
+}
+.kkk {
+  color: aqua;
+}
+.papu {
+  color: aqua;
+}
