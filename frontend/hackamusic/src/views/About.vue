@@ -2,7 +2,7 @@
   <div class="about">
     <Menu></Menu>
     <div class="er">
-      <h1>estuve vago :(</h1>
+      <h1>finde ajetreado srry :(</h1>
     </div>
   </div>
 </template>
