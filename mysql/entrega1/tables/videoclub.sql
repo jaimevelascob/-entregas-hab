@@ -6,7 +6,7 @@ create table film (
 	name varchar(200) not null,
     description varchar(255) not null,
     PEGI int not null,
-    cover varchar(255) not null,
+    cover varchar(256) not null,
     directors varchar(20) not null,
     actors varchar(20) not null
     );
