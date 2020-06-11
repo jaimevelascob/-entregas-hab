@@ -3,7 +3,7 @@ use videoclub;
 DROP DATABASE videoclub;
 create table film (
 	id int primary key auto_increment,
-	name varchar(20) not null,
+	name varchar(200) not null,
     description varchar(255) not null,
     PEGI int not null,
     cover varchar(255) not null,
@@ -18,6 +18,14 @@ create table partner (
     phone int not null,
     birthdate date not null,
     email varchar(30) not null
+    );
+
+create table provider (
+	id int primary key auto_increment,
+    name varchar(20) not null,
+    phone int not null,
+    email varchar(30) not null,
+    DNI int not null
     );
     
 create table copy (
