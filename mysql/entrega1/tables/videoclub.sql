@@ -20,14 +20,6 @@ create table partner (
     email varchar(30) not null
     );
     
-create table provider (
-	id int primary key auto_increment,
-    name varchar(20) not null,
-    phone int not null,
-    email varchar(30) not null,
-    DNI int not null
-    );
-
 create table copy (
 	id int primary key auto_increment,
     sort enum('VHS', 'DVD'),
@@ -38,8 +30,6 @@ create table copy (
     constraint fk_film foreign key (id_film) references film(id)
     );
     
-
-
 create table rental (
 	return_date date not null,
     rating int,
