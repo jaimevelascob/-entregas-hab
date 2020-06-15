@@ -1,14 +1,18 @@
 <template>
-  <div>
+  <div class="rof">
     <div class="client" v-for="(client, index) in clients" :key="client.id">
       <div class="esq">
-        <p>ID: {{ client.id }}</p>
-        <p>Nombre: {{ client.nombre }}</p>
-        <p>Apellido: {{ client.apellido }}</p>
-        <p>Ciudad: {{ client.ciudad }}</p>
-        <p>Empresa: {{ client.empresa }}</p>
-        <button @click="editClientEvent(index)">EDIT</button>
-        <button @click="deleteClientEvent(index)">DELETE</button>
+        <div class="isq">
+          <ul class="random">
+            <p>ID: {{ client.id }}</p>
+            <p>Nombre: {{ client.nombre }}</p>
+            <p>Apellido: {{ client.apellido }}</p>
+            <p>Ciudad: {{ client.ciudad }}</p>
+            <p>Empresa: {{ client.empresa }}</p>
+            <button @click="editClientEvent(index)">EDIT</button>
+            <button @click="deleteClientEvent(index)">DELETE</button>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -18,7 +22,7 @@
 export default {
   name: "showClients",
   props: {
-    clients: Array
+    clients: Array,
   },
   methods: {
     editClientEvent(index) {
@@ -31,8 +35,8 @@ export default {
       let data = this.clients[index].id;
 
       this.$emit("delete", data);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -59,12 +63,12 @@ img {
     margin-right: 0;
   }
 }
+
 .esq {
-  min-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 button {
   width: 100px;
@@ -85,5 +89,36 @@ button:hover {
 }
 button:focus {
   outline: none;
+}
+
+.isq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.random {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@media only screen and (max-width: 768px) {
+  .rof {
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+  }
+  .random {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 2px 10px rgb(255, 196, 196);
+  }
+  .esq {
+    width: 100%;
+    box-shadow: 0px 2px 0px rgb(255, 251, 196);
+  }
 }
 </style>

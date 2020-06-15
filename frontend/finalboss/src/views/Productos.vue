@@ -10,7 +10,7 @@
     </div>
     <div class="lol">
       <!-- IMPORTANDO PRODUCTOS -->
-      <productos :products="products"></productos>
+      <productos :products="products" v-on:buy="buy"></productos>
     </div>
     <!-- FOOTER -->
     <Footer></Footer>
@@ -21,6 +21,7 @@
 <script>
 import axios from "axios";
 import productos from "@/components/showProducts.vue";
+import Swal from "sweetalert2";
 // IMPORTANDO MENU
 import Menu from "@/components/Menu.vue";
 // IMPORTANDO Footer
@@ -31,11 +32,11 @@ export default {
   components: {
     productos,
     Menu,
-    Footer
+    Footer,
   },
   data() {
     return {
-      products: []
+      products: [],
     };
   },
   methods: {
@@ -49,21 +50,26 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-    }
+    },
+    buy() {
+      Swal.fire({
+        title: "Tu compra ha sido realizada con éxito",
+        text: " 🥳",
+        confirmButtonText: "OK",
+      });
+    },
   },
   created() {
     this.getProducts();
-  }
+  },
 };
 </script>
 
 <style scoped>
 .rip {
-  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  justify-content: space-between;
 }
 
 h2 {
@@ -81,4 +87,4 @@ h2 {
 h2:hover {
   opacity: 0.7;
 }
-</style>>
+</style>

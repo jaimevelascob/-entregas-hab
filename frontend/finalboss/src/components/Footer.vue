@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
 };
 </script>
 
@@ -84,6 +84,7 @@ a {
   transition: all 0.4s linear;
   text-align: center;
   border-radius: 70px;
+  letter-spacing: 3.5px;
 }
 .navigation ul li a:hover {
   background: rgb(100, 100, 100);
@@ -111,6 +112,5 @@ a {
     background: rgb(100, 100, 100);
     align-items: center;
   }
-}
-</style>>
-
+}</style
+>>

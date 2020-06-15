@@ -35,8 +35,8 @@ export default {
   name: "Error",
   components: {
     Menu,
-    Footer
-  }
+    Footer,
+  },
 };
 </script>
 
@@ -102,6 +102,15 @@ img {
   }
   100% {
     opacity: 0.4;
+  }
+}
+@media screen and (min-width: 768px) {
+  .ra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5.5rem;
+    padding-bottom: 7rem;
   }
 }
 </style>

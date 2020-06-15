@@ -12,7 +12,11 @@
       <h2>Lista de clientes</h2>
     </ul>
     <!-- CLIENTES -->
-    <clients :clients="clients" v-on:edit="openModal" v-on:delete="deleteClients"></clients>
+    <clients
+      :clients="clients"
+      v-on:edit="openModal"
+      v-on:delete="deleteClients"
+    ></clients>
     <!-- /CLIENTES -->
 
     <!-- MODAL PARA EDITAR -->
@@ -22,23 +26,28 @@
           <h3 class="rem">Editar cliente</h3>
           <p v-show="required">Tienes datos sin completar</p>
           <li class="al">
-            <label for="newNombre">Nombre:</label>
-            <input v-model="newNombre" placeholder="Nombre" />
+            <label for="newName">Nombre:</label>
+            <input v-model="newName" placeholder="Nombre" />
           </li>
           <li class="al">
-            <label for="newApellido">Apellido:</label>
-            <input v-model="newApellido" placeholder="Apellido" />
+            <label for="newSurname">Apellido:</label>
+            <input v-model="newSurname" placeholder="Apellido" />
           </li>
           <li class="al">
-            <label for="newCiudad">Ciudad:</label>
-            <input v-model="newCiudad" placeholder="Ciudad" />
+            <label for="newCity">Ciudad:</label>
+            <input v-model="newCity" placeholder="Ciudad" />
           </li>
           <li class="al">
-            <label for="newEmpresa">Empresa:</label>
-            <input v-model="newEmpresa" placeholder="Empresa" />
+            <label for="newCompany">Empresa:</label>
+            <input v-model="newCompany" placeholder="Empresa" />
           </li>
           <div>
-            <button @click="editClient()" class="update">UPDATE</button>
+            <button
+              @click="editClient(newName, newSurname, newCity, newCompany)"
+              class="update"
+            >
+              UPDATE
+            </button>
             <button @click="closeModal()" class="update">CERRAR</button>
           </div>
         </div>
@@ -68,29 +77,29 @@ export default {
   components: {
     clients,
     Menu,
-    Footer
+    Footer,
   },
   data() {
     return {
       clients: [],
       modal: false,
-      newCiudad: "",
-      newEmpresa: "",
-      newApellido: "",
-      newNombre: "",
+      newName: "",
+      newSurname: "",
+      newCity: "",
+      newCompany: "",
       id: null,
       correctData: false,
-      required: false
+      required: false,
     };
   },
   methods: {
-    //COMPROBAR QUE LOS DATOS NO ESTÁN VACIOS
+    // COMPROBAR QUE LOS DATOS NO ESTÁN VACIOS
     validatingData() {
       if (
-        this.newNombre === "" ||
-        this.newApellido === "" ||
-        this.newCiudad === "" ||
-        this.newEmpresa === ""
+        this.newName === "" ||
+        this.newSurname === "" ||
+        this.newCity === "" ||
+        this.newCompany === ""
       ) {
         this.correctData = false; // NON ENVIAR
         this.required = true; // MOSTRA O MENSAXE
@@ -117,7 +126,7 @@ export default {
       this.id = data;
       axios
         .delete("http://localhost:3000/clientes/del/" + this.id, {
-          id: this.id
+          id: this.id,
         })
         .then(function(response) {
           console.log(response);
@@ -129,27 +138,33 @@ export default {
     },
 
     showEditText(data) {
+      this.newName = data.nombre;
+      this.newSurname = data.apellido;
+      this.newCity = data.ciudad;
+      this.newCompany = data.empresa;
       this.id = data.id;
-      this.newCiudad = data.ciudad;
-      this.newEmpresa = data.empresa;
-      this.newNombre = data.nombre;
-      this.newApellido = data.apellido;
     },
-    //ENVIAR EDICION DE DATA A LA BBDD
-    editClient() {
-      this.validatingData(); // VALIDANDO DATOS DO FORM
-      if (this.correctData === true) {
+    // FUNCIÓN PARA ACTUALIZAR/EDITAR
+    editClient(newName, newSurname, newCity, newCompany) {
+      this.validatingData();
+      if (this.correctData == true) {
         let self = this;
         axios
           .put("http://localhost:3000/clientes/update/" + self.id, {
             id: self.id,
-            nombre: self.newNombre,
-            apellido: self.newApellido,
-            ciudad: self.newCiudad,
-            empresa: self.newEmpresa
+            nombre: self.newName,
+            apellido: self.newSurname,
+            ciudad: self.newCity,
+            empresa: self.newCompany,
           })
           .then(function(response) {
-            location.reload();
+            self.emptyFields();
+            Swal.fire({
+              icon: "success",
+              title: "Dicho y hecho",
+              showConfirmButton: false,
+              timer: 1500,
+            }).then((result) => location.reload());
           })
           .catch(function(error) {
             console.log(error);
@@ -157,8 +172,9 @@ export default {
       }
     },
     // ABRIR MODAL
-    openModal() {
+    openModal(data) {
       this.modal = true;
+      this.showEditText(data);
     },
     // CERRAR MODAL
     closeModal() {
@@ -166,15 +182,15 @@ export default {
     },
     // Limpiar campos
     emptyFields() {
-      this.newNombre = "";
-      this.newApellido = "";
-      this.newCiudad = "";
-      this.newEmpresa = "";
-    }
+      this.newName = "";
+      this.newSurname = "";
+      this.newCity = "";
+      this.newCompany = "";
+    },
   },
   created() {
     this.getClients();
-  }
+  },
 };
 </script>
 

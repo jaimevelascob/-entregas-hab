@@ -32,8 +32,8 @@ export default {
   name: "About",
   components: {
     Menu,
-    Footer
-  }
+    Footer,
+  },
 };
 </script>
 
@@ -52,6 +52,7 @@ img {
   align-items: center;
   padding-top: 5.5rem;
   padding-bottom: 7rem;
+  flex-wrap: wrap;
 }
 
 #r {
@@ -91,6 +92,19 @@ img {
   }
   100% {
     opacity: 0.4;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5.5rem;
+    padding-bottom: 7rem;
+  }
+  .client:last-child {
+    margin-right: 0;
   }
 }
 </style>

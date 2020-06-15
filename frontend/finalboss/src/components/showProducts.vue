@@ -1,20 +1,36 @@
 <template>
-  <div>
+  <div class="rouf">
     <div class="client" v-for="product in products" :key="product.id">
-      <div class="esq">
-        <div class="isq">
-          <p class="id">ID: {{ product.id }}</p>
-          <p>Nombre: {{ product.nombre }}</p>
-          <p>Descripcion: {{ product.descripcion }}</p>
-          <p
-            :class="{ green: product.estado=== 'disponible', red: product.estado=== 'no disponible'}"
-          >Estado: {{ product.estado }}</p>
-          <p>Precio: {{ product.precio }}</p>
-          <img :src="product.img" />
-          <p
-            :class="{ green: product.stock > '1', red: product.stock = '0'}"
-          >Stock: {{ product.stock }}</p>
-          <button @click="getClient()">comprar</button>
+      <div class="rof">
+        <div class="esq">
+          <div class="isq">
+            <ul class="random">
+              <p class="id">ID: {{ product.id }}</p>
+              <p>Nombre: {{ product.nombre }}</p>
+              <p>Descripcion: {{ product.descripcion }}</p>
+              <p
+                :class="{
+                  green: product.estado === 'disponible',
+                  red: product.estado === 'no disponible',
+                }"
+              >
+                Estado: {{ product.estado }}
+              </p>
+              <p>Precio: {{ product.precio }}</p>
+              <ul class="wik">
+                <img :src="product.img" />
+              </ul>
+              <p
+                :class="{
+                  green: product.stock > '1',
+                  red: (product.stock = '0'),
+                }"
+              >
+                Stock: {{ product.stock }}
+              </p>
+              <button @click="buyProduct">comprar</button>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -25,18 +41,14 @@
 export default {
   name: "showProducts",
   props: {
-    products: Array
+    products: Array,
+    result: "",
   },
   methods: {
-    getClient() {
-      Swal.fire({
-        icon: "success",
-        title: "Cliente editadovich",
-        showConfirmButton: false,
-        timer: 1500
-      }).then(result => location.reload());
-    }
-  }
+    buyProduct() {
+      this.$emit("buy");
+    },
+  },
 };
 </script>
 
@@ -44,12 +56,21 @@ export default {
 .red {
   color: red;
 }
+.rouf {
+  display: flex;
+}
 .green {
   color: green;
 }
 .id {
   display: block;
 }
+.random {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 button {
   width: 100px;
   cursor: pointer;
@@ -71,7 +92,7 @@ button:focus {
   outline: none;
 }
 .client {
-  display: block;
+  display: inline-block;
   background-color: #f3f3f3;
   width: 100%;
   border-radius: 10px;
@@ -79,8 +100,11 @@ button:focus {
   box-shadow: 0px 2px 5px rgb(255, 196, 196);
 }
 img {
-  width: 400px;
+  position: static;
+  width: 300px;
+  margin-bottom: 1rem;
 }
+
 @media screen and (min-width: 768px) {
   .client {
     width: 32%;
@@ -92,14 +116,33 @@ img {
   }
 }
 .esq {
-  justify-content: space-between;
   display: flex;
-  padding-top: 6rem;
-  padding-bottom: 7.5rem;
-  width: 100%;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 .isq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 768px) {
+  .rouf {
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+  }
+  .random {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 2px 40px rgb(255, 196, 196);
+  }
+  .esq {
+    width: 100%;
+    box-shadow: 0px 2px 0px rgb(255, 251, 196);
+  }
 }
 </style>
