@@ -1,5 +1,8 @@
 <template>
   <div class="main">
+    <!-- NOMBRE DE LA PAGINA -->
+    <vue-headful title="About" description="About page" />
+    <!-- /NOMBRE DE LA PAGINA -->
     <!-- MENU -->
     <Menu></Menu>
     <!-- /MENU -->
@@ -48,7 +51,7 @@ img {
   justify-content: space-between;
   align-items: center;
   padding-top: 5.5rem;
-  padding-bottom: 6rem;
+  padding-bottom: 7rem;
 }
 
 #r {

@@ -1,7 +1,11 @@
 <template>
   <div>
+    <!-- NOMBRE DE LA PAGINA -->
+    <vue-headful title="Añadir Clientes" description="New clientes page" />
+    <!-- /NOMBRE DE LA PAGINA -->
     <!-- MENU -->
     <Menu></Menu>
+    <!-- /MENU -->
     <div id="aw-contact" class="klk">
       <p v-show="required">Tienes datos sin completar</p>
       <label for="nombre"></label>
@@ -16,9 +20,13 @@
       <label for="empresa"></label>
       <input type="text" name="empresa" placeholder="Empresa del cliente" v-model="empresa" />
       <br />
-      <button @click="addClient(nombre, apellido, ciudad, empresa)">CREAR</button>
+      <div class="rrr">
+        <button @click="addClient(nombre, apellido, ciudad, empresa)">CREAR</button>
+      </div>
     </div>
+    <!-- FOOTER -->
     <Footer></Footer>
+    <!-- /FOOTER -->
   </div>
 </template>
 
@@ -134,6 +142,9 @@ input {
 #aw-contact label {
   resize: none;
   height: 100px;
+}
+.rrr {
+  padding-bottom: 1rem;
 }
 #aw-contact button {
   border: none;

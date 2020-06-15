@@ -2,18 +2,20 @@
   <div>
     <div class="client" v-for="product in products" :key="product.id">
       <div class="esq">
-        <p class="id">ID: {{ product.id }}</p>
-        <p>Nombre: {{ product.nombre }}</p>
-        <p>Descripcion: {{ product.descripcion }}</p>
-        <p
-          :class="{ green: product.estado=== 'disponible', red: product.estado=== 'no disponible'}"
-        >Estado: {{ product.estado }}</p>
-        <p>Precio: {{ product.precio }}</p>
-        <img :src="product.img" />
-        <p
-          :class="{ green: product.stock > '1', red: product.stock = '0'}"
-        >Stock: {{ product.stock }}</p>
-        <button @click="getClient()">comprar</button>
+        <div class="isq">
+          <p class="id">ID: {{ product.id }}</p>
+          <p>Nombre: {{ product.nombre }}</p>
+          <p>Descripcion: {{ product.descripcion }}</p>
+          <p
+            :class="{ green: product.estado=== 'disponible', red: product.estado=== 'no disponible'}"
+          >Estado: {{ product.estado }}</p>
+          <p>Precio: {{ product.precio }}</p>
+          <img :src="product.img" />
+          <p
+            :class="{ green: product.stock > '1', red: product.stock = '0'}"
+          >Stock: {{ product.stock }}</p>
+          <button @click="getClient()">comprar</button>
+        </div>
       </div>
     </div>
   </div>
@@ -69,12 +71,11 @@ button:focus {
   outline: none;
 }
 .client {
-  display: inline-block;
+  display: block;
   background-color: #f3f3f3;
   width: 100%;
-  max-width: 500px;
   border-radius: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   box-shadow: 0px 2px 5px rgb(255, 196, 196);
 }
 img {
@@ -91,10 +92,14 @@ img {
   }
 }
 .esq {
-  min-width: 100%;
+  justify-content: space-between;
   display: flex;
-  flex-direction: column;
+  padding-top: 6rem;
+  padding-bottom: 7.5rem;
+  width: 100%;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+}
+.isq {
 }
 </style>

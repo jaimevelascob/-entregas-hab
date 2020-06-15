@@ -93,14 +93,19 @@ app.delete("/clientes/del/:id", (req, res) => {
 
 // Actualizando clientes
 app.put("/clientes/update/:id", (req, res) => {
-  const { nombre, apellido, ciudad, empresa, id } = req.body;
-  // SECUENCIA SQL
-  const sql = `UPDATE clientes SET nombre='${nombre}', apellido='${apellido}', empresa='${empresa}', ciudad='${ciudad}' WHERE id=${id}`;
-  // CONEXION
+  const { id, nombre, apellido, ciudad, empresa } = req.body;
+  // QUERY SQL
+  const sql = `UPDATE clientes SET nombre='${nombre}', apellido='${apellido}', ciudad='${ciudad}', empresa='${empresa}' WHERE id=${id}`;
+  // const newClient = {
+  //   nombre: req.body.nombre,
+  //   apellido: req.body.apellido,
+  //   ciudad: req.body.ciudad,
+  //   empresa: req.body.empresa,
+  // };
+  //CONEXION
   connection.query(sql, (error) => {
-    // SI SALE MAL
     if (error) throw error;
-    res.send("Cliente actualizado");
+    res.send("User editado");
   });
 });
 

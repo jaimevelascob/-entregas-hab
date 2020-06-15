@@ -1,16 +1,22 @@
 <template>
   <div class="error">
+    <!-- NOMBRE DE LA PAGINA -->
     <vue-headful title="Error" description="Error page of web" />
+    <!-- /NOMBRE DE LA PAGINA -->
     <!-- IMPORTANDO MENU -->
     <Menu></Menu>
-
-    <div class="h">
-      <h1 id="f" class="h">ERROR</h1>
-      <img
-        src="https://media1.tenor.com/images/2f57d8dc4113293da5a4f8b3635a968e/tenor.gif?itemid=12154897"
-        alt="gif"
-      />
-      <h1 id="r" class="h">ERROR</h1>
+    <!-- /MENU -->
+    <div class="ra">
+      <div class="re">
+        <div class="h">
+          <h1 id="f" class="h">ERROR</h1>
+          <img
+            src="https://media1.tenor.com/images/2f57d8dc4113293da5a4f8b3635a968e/tenor.gif?itemid=12154897"
+            alt="gif"
+          />
+          <h1 id="r" class="h">ERROR</h1>
+        </div>
+      </div>
     </div>
     <!-- MENU -->
     <!-- IMPORTANDO Footer -->
@@ -42,9 +48,20 @@ export default {
   justify-content: space-between;
   display: flex;
   padding-top: 6rem;
-  padding-bottom: 7rem;
+  padding-bottom: 7.5rem;
+  width: 100%;
+  align-items: center;
 }
-
+.ra {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.re {
+  display: inline-block;
+}
 img {
   box-shadow: 4px 3px 15px #000000;
 }

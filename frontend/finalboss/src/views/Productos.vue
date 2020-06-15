@@ -1,10 +1,17 @@
 <template>
   <div class="main">
+    <!-- NOMBRE DE LA PAGINA -->
+    <vue-headful title="Productos" description="Productos page" />
+    <!-- /NOMBRE DE LA PAGINA -->
     <!-- MENU -->
     <Menu></Menu>
-    <h2>Lista de Productos</h2>
-    <!-- IMPORTANDO PRODUCTOS -->
-    <productos :products="products"></productos>
+    <div class="rip">
+      <h2>Lista de Productos</h2>
+    </div>
+    <div class="lol">
+      <!-- IMPORTANDO PRODUCTOS -->
+      <productos :products="products"></productos>
+    </div>
     <!-- FOOTER -->
     <Footer></Footer>
     <!-- /FOOTER -->
@@ -51,8 +58,12 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  padding-top: 10rem;
+.rip {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 h2 {
@@ -61,8 +72,8 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  -webkit-transform: rotate(15deg);
-  transform: rotate(15deg);
+  /* -webkit-transform: rotate(15deg);
+  transform: rotate(15deg); */
   cursor: pointer;
   -webkit-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;

@@ -7,6 +7,7 @@
 
     <!-- NOMBRE DE LA PAGINA -->
     <vue-headful title="Register" description="Register page" />
+    <!-- /NOMBRE DE LA PAGINA -->
     <div class="registerBox">
       <h2>Registrate</h2>
       <p class="color1" v-show="required">Tienes datos sin completar</p>

@@ -1,7 +1,14 @@
 <template>
   <div class="main">
+    <!-- NOMBRE DE LA PAGINA -->
+    <vue-headful title="Home" description="Home page" />
+    <!-- /NOMBRE DE LA PAGINA -->
+    <!-- MENU -->
     <Menu></Menu>
+    <!-- /MENU -->
+    <!-- LOGIN -->
     <Login></Login>
+    <!-- /LOGIN -->
   </div>
 </template>
 

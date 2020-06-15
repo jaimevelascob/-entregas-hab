@@ -40,15 +40,14 @@ export default {
   font-size: 1.2rem;
   line-height: 1.6rem;
   margin: 0;
-  margin-top: 10px;
+
   width: 100%;
   height: 175px;
 }
 :first-letter {
   color: #dca453;
 }
-.real {
-}
+
 .container {
   width: 85%;
   max-width: 850px;
@@ -84,7 +83,7 @@ a {
   align-items: center;
   transition: all 0.4s linear;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 70px;
 }
 .navigation ul li a:hover {
   background: rgb(100, 100, 100);
@@ -96,6 +95,22 @@ a {
   font-size: 1.2em;
   border: solid 2px #fff;
   border-radius: 10%;
+}
+@media only screen and (max-width: 767px) {
+  .navigation {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .navigation ul li a {
+    display: grid;
+    transition: all 0.4s linear;
+    border-radius: 85px;
+  }
+  .navigation ul li a:hover {
+    background: rgb(100, 100, 100);
+    align-items: center;
+  }
 }
 </style>>
 
